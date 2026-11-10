@@ -1,33 +1,76 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
+# ---------- Go ----------
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
-
-# Test binary, built with `go test -c`
 *.test
-
-# Code coverage profiles and other test artifacts
 *.out
-coverage.*
-!coverage.go
-*.coverprofile
-profile.cov
+coverage.txt
+coverage.html
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# Скомпилированные бинарники сервисов
+/bin/
+/services/*/bin/
 
-# Go workspace file
-go.work
+# Локальные файлы workspace (общий go.work коммитим, локальные настройки нет)
 go.work.sum
 
-# env file
-.env
+# Vendor (если не используется)
+vendor/
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# ---------- Секреты и окружение ----------
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Ключи подписи JWT и сертификаты
+*.pem
+*.key
+*.crt
+*.p12
+keys/
+secrets/
+
+# ---------- Node / Frontend ----------
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- Docker ----------
+# Локальные данные томов
+deploy/data/
+pgdata/
+docker-compose.override.yml
+
+# ---------- IDE и редакторы ----------
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# ---------- ОС ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Логи и временные файлы ----------
+*.log
+logs/
+tmp/
+.cache/
+
+# ---------- Профилирование и бенчмарки ----------
+*.prof
+*.pprof
+*.trace
+/bench-results/
